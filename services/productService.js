@@ -9,6 +9,8 @@ function productService(Product){
         var product = new Product(req.body);
         product.save();
         response.success = true;
+        response.results = product;
+        response.messages = [];
         return res.json(response);
     };
 
@@ -20,12 +22,14 @@ function productService(Product){
 
         Product.find(query, (err, products) => {
             if(err){
-                response.success = false;
+                response.success = false;                
+                response.results = [];
                 response.messages.push(err);
                 return res.json(response);
             }
             response.success = true;
             response.results = products;
+            response.messages = [];
             return res.json(response);
         });
     }
@@ -48,6 +52,7 @@ function productService(Product){
         
         response.success = true;
         response.results = req.product;
+        response.messages = [];
         res.json(response);
     }
 
@@ -62,12 +67,14 @@ function productService(Product){
             if(err){
                                 
                 response.success = false;
+                response.results = {};
                 response.messages.push(err);
                 return res.json(response);
             }
             
             response.success = true;
             response.results = req.product;
+            response.messages = [];
             return res.json(response);
         });
     }
