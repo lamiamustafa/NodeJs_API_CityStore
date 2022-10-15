@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 
 const db = mongoose.connect('mongodb+srv://dbAdmin:an67UpHytaJjPoWZ@cluster0.enmo3xr.mongodb.net/cityStoredb?retryWrites=true&w=majority');
 const apiRouter = express.Router();
