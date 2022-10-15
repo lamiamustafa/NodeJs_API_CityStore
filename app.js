@@ -10,7 +10,15 @@ const Product = require('./models/Product');
 const categoryRouter = require('./routes/categoryRouter')(Category);
 const productRouter = require('./routes/productRouter')(Product);
 const app = express();
+var cors = require('cors');
 
+app.use(
+    cors({
+        credentials: true,
+        origin: true
+    })
+);
+app.options('*', cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
